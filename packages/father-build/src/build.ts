@@ -17,7 +17,7 @@ export function getBundleOpts(opts: IOpts): IBundleOptions[] {
   const { cwd, buildArgs = {}, rootConfig = {} } = opts;
   const entry = getExistFile({
     cwd,
-    files: ['src/index.tsx', 'src/index.ts', 'src/index.jsx', 'src/index.js'],
+    files: ['src/index.tsx', 'src/index.ts', 'src/index.jsx', 'src/index.js', 'src/index.vue'],
     returnRelative: true,
   });
   const userConfig = getUserConfig({ cwd, customPath: buildArgs.config });

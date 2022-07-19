@@ -118,6 +118,7 @@ export default {
       type: 'object',
     },
     target: noEmptyStr,
+    app: noEmptyStr,
     doc: {
       type: 'object',
     },

@@ -36,7 +36,7 @@ function transformImportLess2Css() {
   }
 }
 
-export default function(opts: IGetBabelConfigOpts) {
+export default function getBabelConfig(opts: IGetBabelConfigOpts) {
   const { target, typescript, type, runtimeHelpers, filePath, browserFiles, nodeFiles, nodeVersion, lazy, lessInBabelMode } = opts;
   let isBrowser = target === 'browser';
   // rollup 场景下不会传入 filePath
@@ -61,7 +61,7 @@ export default function(opts: IGetBabelConfigOpts) {
           targets,
           modules: type === 'esm' ? false : 'auto'
         }],
-        ...(isBrowser ? [require.resolve('@babel/preset-react')] : []),
+        // ...(isBrowser ? [require.resolve('@babel/preset-react')] : []),
       ],
       plugins: [
         ...((type === 'cjs' && lazy && !isBrowser)
@@ -70,7 +70,7 @@ export default function(opts: IGetBabelConfigOpts) {
           }]]
           : []),
         ...(lessInBabelMode ? [transformImportLess2Css] : []),
-        ...(isBrowser ? [require.resolve('babel-plugin-react-require')] : []),
+        // ...(isBrowser ? [require.resolve('babel-plugin-react-require')] : []),
         require.resolve('@babel/plugin-syntax-dynamic-import'),
         require.resolve('@babel/plugin-proposal-export-default-from'),
         require.resolve('@babel/plugin-proposal-export-namespace-from'),
